@@ -46,8 +46,8 @@
             <div ng-repeat="todo in todos" class="col-sm-offset-2 col-sm-8">
                 <div class="center-block text-center list-group">
                     <a href="" class="list-group-item">
-                        <h4  ng-click="edit.header=true" ng-hide="edit.header" class="list-group-item-heading">{{todo.heading}}</h4>
-                        <input ng-blur="edit.header=false" ng-show="edit.header" type="text" ng-model="todo.heading">
+                        <h4  ng-click="edit.header=true" ng-hide="edit.header" class="list-group-item-heading">{{todo.header}}</h4>
+                        <input ng-blur="edit.header=false" ng-show="edit.header" type="text" ng-model="todo.header">
                         <p  ng-hide="edit.text" ng-click="edit.text=true" class="list-group-item-text">{{todo.text}}</p>
                         <textarea class="form-control" ng-blur="edit.text=false" ng-show="edit.text" ng-model="todo.text" rows="5" ></textarea>
                         <button type="button" class="btn btn-xs bt-success">Save</button>

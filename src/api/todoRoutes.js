@@ -1,20 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var Todo = require('../models/todos');
+
 
 router.get('/todos', function (req, res) {
- todos = [{
-        "heading":"List group item heading",
-        "text":"Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit."
-    },
-    {
-        "heading":"List group item heading",
-        "text":"Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit."
-    },
-    {
-        "heading":"List group item heading",
-        "text":"Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit."
-    }];
-    res.json({todos: todos});
+    Todo.find({}, function(err, data){
+        res.json({todos: data});
+    });
 });
 
 module.exports = router;
