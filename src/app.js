@@ -7,6 +7,13 @@ require('./database');
 require('./seed');
 app.use('/', express.static('public'));
 app.use(parser.json());
+app.use(function (error, req, res, next) {
+  if (error instanceof SyntaxError) {
+    res.status(500).json({err: error.message});
+  } else {
+    next();
+  }
+});
 
 app.use('/api', router);
 
