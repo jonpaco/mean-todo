@@ -10,7 +10,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
         crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
 </head>
 
 <body ng-app="meanTodoApp">
@@ -43,11 +43,13 @@
             <button type="button" class="btn btn-xs bt-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add A New Task</button>
         </div>        
         <div ng-controller="MainCtrl" class="row">
-            <div ng-repeat="todo in todos" class="col-sm-offset-4 col-sm-4">
+            <div ng-repeat="todo in todos" class="col-sm-offset-2 col-sm-8">
                 <div class="center-block text-center list-group">
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading">{{todo.heading}}</h4>
-                        <p class="list-group-item-text">{{todo.text}}</p>
+                    <a href="" class="list-group-item">
+                        <h4  ng-click="edit.header=true" ng-hide="edit.header" class="list-group-item-heading">{{todo.heading}}</h4>
+                        <input ng-blur="edit.header=false" ng-show="edit.header" type="text" ng-model="todo.heading">
+                        <p  ng-hide="edit.text" ng-click="edit.text=true" class="list-group-item-text">{{todo.text}}</p>
+                        <textarea class="form-control" ng-blur="edit.text=false" ng-show="edit.text" ng-model="todo.text" rows="5" ></textarea>
                         <button type="button" class="btn btn-xs bt-success">Save</button>
                         <button type="button" class="btn btn-xs bt-danger">Delete</button>
                     </a>
@@ -56,12 +58,12 @@
             <!-- /.col-sm-4 -->
         </div>
     </div>
-    <footer class="footer">
+    <footer class="footer text-center">
       <div class="container">
         <p class="text-muted">Author: Jonathan Cardinale</p>
       </div>
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="./js/app.js"></script>
     <script src="./js/controllers/main.js"></script>
     <script src="./js/services/todoService.js"></script>
