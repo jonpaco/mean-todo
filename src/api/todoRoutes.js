@@ -30,4 +30,38 @@ router.post('/todos', function (req, res) {
     });
 });
 
+
+router.put('/todos/:id', function (req, res) {
+    var reqTodo = req.body;
+    var id = req.params.id;
+    if (reqTodo && reqTodo._id != id) {
+        res.status(500).json({error: "Id missing"});
+    } else {
+        Todo.findByIdAndUpdate(reqTodo._id, reqTodo, {new: true}, function(err, data){
+            if (err){
+                res.status(500).json({error: err.message});
+            } else {
+                res.json({todo: data, message:"update successful"});
+            }
+        });
+    }
+});
+
+router.delete('/todos/:id', function (req, res) {
+    var id = req.params.id;
+    if (!id) {
+        res.status(500).json({error: "Id missing"});
+    } else {
+        Todo.findByIdAndRemove(id, function(err, data){
+            if (err){
+                res.status(500).json({error: err.message});
+            } else if (!data) {
+                res.status(500).json({error: "No object found"});
+            } else {
+                res.json({todo: data, message:"delete successful"});
+            }
+        });
+    }
+});
+
 module.exports = router;

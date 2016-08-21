@@ -1,5 +1,6 @@
 'use string';
 var mongoose = require('mongoose');
+//fix deprecation warning in mongoose
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/todo-mean', function(err){
     if (err) {
