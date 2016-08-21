@@ -2,12 +2,11 @@
 var express = require('express');
 var parser = require('body-parser');
 var app = express();
+var router = require('./api/todoRoutes');
 app.use('/', express.static('public'));
 app.use(parser.json());
 
-app.get('/todos', function (req, res) {
-    res.json({message: 'GET todos'});
-});
+app.use('/api', router);
 
 app.listen(3000, function () {
     console.log('Frontend server is running');
