@@ -1,0 +1,24 @@
+/* Fix for navabar overlay*/
+body { 
+    padding-top: 70px;
+    background-color: whitesmoke; 
+}
+
+.todo-theme {
+    text-align: center;
+    background-color: white;
+    max-width: 768px;
+}
+
+.todo-theme .list-group {
+    text-align: left;
+    background-color: white;
+}
+
+.footer {
+    height: 60px;
+}
+
+#add-task {
+    padding-bottom: 20px;
+}
