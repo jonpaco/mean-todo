@@ -4,7 +4,8 @@ var parser = require('body-parser');
 var app = express();
 var router = require('./api/todoRoutes');
 require('./database');
-require('./seed');
+// TODO: seed data
+// require('./seed');
 app.use('/', express.static('public'));
 app.use(parser.json());
 //handle parsing errors gracefully
