@@ -1,1 +1,1 @@
-angular.module('meanTodoApp', []);
+angular.module('meanTodoApp', ['ui.bootstrap']);
